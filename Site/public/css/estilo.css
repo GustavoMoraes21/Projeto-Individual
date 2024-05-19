@@ -9,13 +9,20 @@ body {
 
 :root {
   --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(124vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+}
+
+.container-index {
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -31,7 +38,6 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #000000;
 }
 
 .header .container_nav {
@@ -73,6 +79,8 @@ body {
   height: var(--tamanho-banner);
   color: white;
   background-size: cover;
+  background-image: url('../assets/download\ \(3\).jpg');
+  background-attachment: fixed;
 }
 
 .banner .container {
@@ -159,9 +167,7 @@ body {
 .login .container {
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  width: 100%; 
-  height: 70vh; 
+  padding-top: 20px;
 }
 
 .cadastro .container {
@@ -169,6 +175,18 @@ body {
   align-items: center;
   background-size: cover;
   padding-top: 25px;
+}
+
+.card-login {
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  width: 25%;
+  padding: 0px 10px 20px 10px;
+  border: 2px solid #030303;
 }
 
 .card {
@@ -317,10 +335,18 @@ body {
 .resposta {
   display: flex;
   justify-content: center;
-  display: none;
   font-size: 10px;
   font-weight: bold;
   color: red;
+  margin: 5px 0px 5px 0px;
+}
+
+.resposta2 {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: green;
   margin: 5px 0px 5px 0px;
 }
 

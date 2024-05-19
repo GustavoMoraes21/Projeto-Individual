@@ -6,17 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Car | Login</title>
+    <title>CarMeeting | Login</title>
 
     <script src="./js/sessao.js"></script>
-
+    <link rel="icon" href="assets/icon/C.ico">
     <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
 <body>
-
-    <!--Header-->
-
     <div class="header">
         <div class="container_nav">
             <h1 class="titulo">Car<b>Meeting</b></h1>
@@ -44,7 +41,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="card card-login">
+            <div class="card-login">
                 <h2>Olá GearHead!</h2>
                 <div class="formulario">
                     <div class="campo">
@@ -56,14 +53,18 @@
                         <input id="senha_input" type="password" placeholder="******">
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
+                    <div class="resposta" id="div_todos"></div>
                     <div class="cadastrar">Não é cadastrado?  <a href="cadastro.html">Clique aqui</a></div>
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="assets/car-boss.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
+            </div>
+            <div class="imagem">
+                <img src="assets/porsche-normal.jpg">
             </div>
         </div>
     </div>
@@ -81,8 +82,7 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            div_todos.innerHTML = `Preencha todos os campos!`
             finalizarAguardar();
             return false;
         }

@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Car | Cadastro</title>
+    <title>CarMeeting | Cadastro</title>
 
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css" />
-    <link rel="icon" href="./assets/icon/favicon2.ico" />
+    <link rel="icon" href="assets/icon/C.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="cadastro">  
+    <div class="cadastro">
         <div class="container">
             <div class="card">
                 <h2>Bem-vindo GearHead!</h2>
@@ -47,12 +47,12 @@
                         <div class="campo">
                             <span>Nome:</span>
                             <input id="nome_input" type="text" placeholder="Seu Nome" />
-                            <div class="resposta" id="div_nome">asdasd</div>
+                            <div class="resposta" id="div_nome"></div>
                         </div>
                         <div class="campo">
                             <span>E-mail:</span>
                             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-                            <div class="resposta" id="div_email">asdasd</div>
+                            <div class="resposta" id="div_email"></div>
                         </div>
                     </div>
                     <div class="lado2">
@@ -63,17 +63,18 @@
                         <div class="campo">
                             <span>Senha:</span>
                             <input id="senha_input" type="password" placeholder="******" />
-                            <div class="resposta" id="div_senha">asdasd</div>
+                            <div class="resposta" id="div_senha"></div>
                         </div>
                         <div class="campo">
                             <span>Confirmação da Senha:</span>
                             <input id="confirmacao_senha_input" type="password" placeholder="******" />
-                            <div class="resposta" id="div_confirme_senha">asdasd</div>
+                            <div class="resposta" id="div_senha_confirme"></div>
                         </div>
                     </div>
                 </div>
                 <button class="botao" onclick="cadastrar()">Cadastrar</button>
-                <div class="resposta" id="div_todos">asdasdasd</div>
+                <div class="resposta" id="div_todos"></div>
+                <div class="resposta2" id="div_todos2"></div>
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/car-boss.gif" id="loading-gif" />
                 </div>
@@ -99,22 +100,77 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        
+
+        var cadastro = true;
+        var tamanho_nome = nomeVar.length;
+        var arroba = emailVar.indexOf('@');
+        var school = emailVar.indexOf('.school');
+        var tamanho_senha = senhaVar.length;
+        var caracter_senha = senhaVar.indexOf('#') >= 0 || senhaVar.indexOf('%') >= 0 || senhaVar.indexOf('!') >= 0
+
         if (
             nomeVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
             confirmacaoSenhaVar == ""
         ) {
-            div_todos.style.display = "block";
-            mensagem_erro.innerHTML =
-                "(Mensagem de erro para todos os campos em branco)";
+            div_todos.innerHTML =
+                "Preencha todos os campos!";
 
             finalizarAguardar();
             return false;
         } else {
-            setInterval(sumirMensagem, 5000);
+            div_todos.innerHTML = ""
         }
+
+        if (cadastro = true) {
+            if (nomeVar >= 0 || nomeVar <= 0) {
+                div_nome.innerHTML = `*Coloque apenas letras nesse campo`
+                cadastro = false;
+                finalizarAguardar();
+                return false;
+            } else if (tamanho_nome < 8) {
+                div_nome.innerHTML = `*Não possui 8 letras`
+                cadastro = false;
+                finalizarAguardar();
+                return false;
+            } else {
+                div_nome.innerHTML = ''
+            }
+
+            if (arroba < 0 || school < 0) {
+                div_email.innerHTML = `Coloque um E-mail valido`
+                finalizarAguardar();
+                return false;
+            } else {
+                div_email.innerHTML = ''
+            }
+
+            if (tamanho_senha < 8) {
+                div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
+                cadastro = false;
+                finalizarAguardar();
+                return false;
+            } else if (caracter_senha == false) {
+                div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
+                cadastro = false;
+                finalizarAguardar();
+                return false;
+            } else {
+                div_senha.innerHTML = ''
+            }
+
+            if (confirmacaoSenhaVar != senhaVar) {
+                div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
+                cadastro = false;
+                finalizarAguardar();
+                return false;
+            } else {
+                div_senha_confirme.innerHTML = ''
+            }
+            div_todos2.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        }
+        
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -134,10 +190,6 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    cardErro.style.display = "block";
-
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                     setTimeout(() => {
                         window.location = "login.html";
