@@ -101,7 +101,7 @@
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-        var cadastro = true;
+        var cadastro = false;
         var tamanho_nome = nomeVar.length;
         var arroba = emailVar.indexOf('@');
         var school = emailVar.indexOf('.school');
@@ -128,12 +128,10 @@
                 div_nome.innerHTML = `*Coloque apenas letras nesse campo`
                 cadastro = false;
                 finalizarAguardar();
-                return false;
             } else if (tamanho_nome < 8) {
                 div_nome.innerHTML = `*Não possui 8 letras`
                 cadastro = false;
                 finalizarAguardar();
-                return false;
             } else {
                 div_nome.innerHTML = ''
             }
@@ -141,7 +139,7 @@
             if (arroba < 0 || school < 0) {
                 div_email.innerHTML = `Coloque um E-mail valido`
                 finalizarAguardar();
-                return false;
+                cadastro = false;
             } else {
                 div_email.innerHTML = ''
             }
@@ -150,12 +148,10 @@
                 div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
                 cadastro = false;
                 finalizarAguardar();
-                return false;
             } else if (caracter_senha == false) {
                 div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
                 cadastro = false;
                 finalizarAguardar();
-                return false;
             } else {
                 div_senha.innerHTML = ''
             }
@@ -164,13 +160,14 @@
                 div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
                 cadastro = false;
                 finalizarAguardar();
-                return false;
             } else {
                 div_senha_confirme.innerHTML = ''
             }
+        }
+
+        if (cadastro == true) {
             div_todos2.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
         }
-        
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
