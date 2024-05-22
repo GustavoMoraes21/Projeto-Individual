@@ -101,7 +101,7 @@
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-        var cadastro = false;
+        var cadastro = true;
         var tamanho_nome = nomeVar.length;
         var arroba = emailVar.indexOf('@');
         var school = emailVar.indexOf('.school');
@@ -119,90 +119,86 @@
 
             finalizarAguardar();
             return false;
+            cadastro = false;
         } else {
             div_todos.innerHTML = ""
         }
 
-        if (cadastro = true) {
-            if (nomeVar >= 0 || nomeVar <= 0) {
-                div_nome.innerHTML = `*Coloque apenas letras nesse campo`
-                cadastro = false;
-                finalizarAguardar();
-            } else if (tamanho_nome < 8) {
-                div_nome.innerHTML = `*Não possui 8 letras`
-                cadastro = false;
-                finalizarAguardar();
-            } else {
-                div_nome.innerHTML = ''
-            }
 
-            if (arroba < 0 || school < 0) {
-                div_email.innerHTML = `Coloque um E-mail valido`
-                finalizarAguardar();
-                cadastro = false;
-            } else {
-                div_email.innerHTML = ''
-            }
-
-            if (tamanho_senha < 8) {
-                div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
-                cadastro = false;
-                finalizarAguardar();
-            } else if (caracter_senha == false) {
-                div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
-                cadastro = false;
-                finalizarAguardar();
-            } else {
-                div_senha.innerHTML = ''
-            }
-
-            if (confirmacaoSenhaVar != senhaVar) {
-                div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
-                cadastro = false;
-                finalizarAguardar();
-            } else {
-                div_senha_confirme.innerHTML = ''
-            }
+        if (nomeVar >= 0 || nomeVar <= 0) {
+            div_nome.innerHTML = `*Coloque apenas letras nesse campo`
+            cadastro = false;
+            finalizarAguardar();
+        } else if (tamanho_nome < 8) {
+            div_nome.innerHTML = `*Não possui 8 letras`
+            cadastro = false;
+            finalizarAguardar();
+        } else {
+            div_nome.innerHTML = ''
         }
+
+        if (arroba < 0 || school < 0) {
+            div_email.innerHTML = `Coloque um E-mail valido`
+            finalizarAguardar();
+            cadastro = false;
+        } else {
+            div_email.innerHTML = ''
+        }
+
+        if (tamanho_senha < 8) {
+            div_senha.innerHTML = `A senha deve conter no mínimo 8 caracteres`
+            cadastro = false;
+            finalizarAguardar();
+        } else if (caracter_senha == false) {
+            div_senha.innerHTML = `Precisa de um dos três caracteres especiais '!' '#' '%'`
+            cadastro = false;
+            finalizarAguardar();
+        } else {
+            div_senha.innerHTML = ''
+        }
+
+        if (confirmacaoSenhaVar != senhaVar) {
+            div_senha_confirme.innerHTML = `A senha não está igual a senha anterior`
+            cadastro = false;
+            finalizarAguardar();
+        } else {
+            div_senha_confirme.innerHTML = ''
+        }
+
 
         if (cadastro == true) {
             div_todos2.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-        }
 
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
 
-                if (resposta.ok) {
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                }),
             })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-        return false;
-    }
+                    if (resposta.ok) {
 
-    function sumirMensagem() {
-        cardErro.style.display = "none";
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+
+                        limparFormulario();
+                        finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+        }
     }
 </script>

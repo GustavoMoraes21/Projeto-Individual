@@ -10,4 +10,5 @@ CREATE TABLE usuario (
 );
 
 select * from usuario;
+drop table usuario;
 
