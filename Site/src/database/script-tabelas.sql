@@ -10,5 +10,13 @@ CREATE TABLE usuario (
 );
 
 select * from usuario;
-drop table usuario;
+
+CREATE TABLE quiz (
+	idQuiz int PRIMARY KEY 	AUTO_INCREMENT,
+	fkUsuario int,
+	pontuacao float,
+	horario timestamp
+);
+
+
 
