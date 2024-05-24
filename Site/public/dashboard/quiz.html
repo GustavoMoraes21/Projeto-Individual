@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon" href="../assets/icon/C.ico">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarMeeting</title>
+
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body> <!--  onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()" -->
+
+    <div class="janela">
+
+        <div class="header-left">
+
+            <h1>Car<b>Meeting</b></h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Aquários</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="tela_quiz">
+            <div class="quiz" id="tela_quiz">
+                <h1>Bem Vindo ao Quiz!</h1>
+                <br>
+                <h2>Aqui veremos se você realmente gosta de carros</h2>
+
+                <button class="botao_quiz" onclick="iniciar()">Iniciar Quiz</button>
+            </div>
+
+            <div class="pergunta1" id="pergunta1">
+                <div class="container_quiz">
+                    <h1>1 - pergunta aqui</h1>
+                    <div class="caixa_p1">
+                        <div class="lado1">
+                            <button onclick="botao1()" class="botao_quiz">questao 1</button>
+                            <button onclick="botao2()" class="botao_quiz">questao 2</button>
+                        </div>
+                        <div class="lado2">
+                            <button onclick="botao3()" class="botao_quiz">questao 3</button>
+                            <button onclick="botao4()" class="botao_quiz">questao 4</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pergunta1" id="pergunta2">
+                <div class="container_quiz">
+                    <h1>2 - pergunta aqui</h1>
+                    <div class="caixa_p1">
+                        <div class="lado1">
+                            <button onclick="botao5()" class="botao_quiz">questao 1</button>
+                            <button onclick="botao6()" class="botao_quiz">questao 2</button>
+                        </div>
+                        <div class="lado2">
+                            <button onclick="botao7()" class="botao_quiz">questao 3</button>
+                            <button onclick="botao8()" class="botao_quiz">questao 4</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pergunta1" id="pergunta3">
+                <div class="container_quiz">
+                    <h1>3 - pergunta aqui</h1>
+                    <div class="caixa_p1">
+                        <div class="lado1">
+                            <button onclick="botao9()" class="botao_quiz">questao 1</button>
+                            <button onclick="botao10()" class="botao_quiz">questao 2</button>
+                        </div>
+                        <div class="lado2">
+                            <button onclick="botao11()" class="botao_quiz">questao 3</button>
+                            <button onclick="botao12()" class="botao_quiz">questao 4</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz_final" id="final">
+                <h1>Resultados:</h1>
+                <br>
+                <h2></h2>
+
+                <button class="botao_quiz" onclick="voltar()">Voltar</button>
+            </div>
+
+
+
+
+            <!-- <div class="cards" id="cardAquarios">
+
+            </div> -->
+
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+    function iniciar() {
+        tela_quiz.style.display = 'none'
+        pergunta1.style.display = 'block'
+    }
+
+    function botao1() {
+        pergunta1.style.display = 'none'    
+        pergunta2.style.display = 'block'
+    }
+
+    function botao2() {
+        pergunta1.style.display = 'none'    
+        pergunta2.style.display = 'block'
+    }
+
+    function botao3() {
+        pergunta1.style.display = 'none'    
+        pergunta2.style.display = 'block'
+    }
+
+    function botao4() {
+        pergunta1.style.display = 'none'    
+        pergunta2.style.display = 'block'
+    }
+
+    function botao5() {
+        pergunta2.style.display = 'none'    
+        pergunta3.style.display = 'block'
+    }
+
+    function botao6() {
+        pergunta2.style.display = 'none'    
+        pergunta3.style.display = 'block'
+    }
+
+    function botao7() {
+        pergunta2.style.display = 'none'    
+        pergunta3.style.display = 'block'
+    }
+
+    function botao8() {
+        pergunta2.style.display = 'none'    
+        pergunta3.style.display = 'block'
+    }
+
+    function botao9() {
+        pergunta3.style.display = 'none'    
+        final.style.display = 'flex'
+    }
+
+    function botao10() {
+        pergunta3.style.display = 'none'    
+        final.style.display = 'flex'
+    }
+
+    function botao11() {
+        pergunta3.style.display = 'none'    
+        final.style.display = 'flex'
+    }
+
+    function botao12() {
+        pergunta3.style.display = 'none'    
+        final.style.display = 'flex'
+    }
+
+    function voltar() {
+        final.style.display = 'none'
+        tela_quiz.style.display = 'flex'
+    }
+
+    function exibirAquarios() {
+        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
+            document.getElementById("cardAquarios").innerHTML += `
+                    <div class="card-aquario">
+                        <div class="title-aquario">
+                            <h1>${item.descricao}</h1>
+                        </div>
+                        <div class="desc-aquario">
+                        <div class="temperatura">
+                            <p id="temp_aquario_${item.id}">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="card_${item.id}"></div>
+                    </div>
+                    </div>
+                    `
+        });
+    }
+
+</script>
+
+</html>
