@@ -511,3 +511,13 @@ canvas {
   margin: 0px;
   padding: 0px;
 }
+
+.grafico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 750px;
+  height: 400px;
+  padding: 0px;
+  margin: 0px;
+}

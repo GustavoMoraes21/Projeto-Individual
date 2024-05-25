@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>CarMeeting</title>
 
 
@@ -67,12 +70,12 @@
                     <h1>1 - pergunta aqui</h1>
                     <div class="caixa_p1">
                         <div class="lado1">
-                            <button onclick="botao1()" class="botao_quiz">questao 1</button>
-                            <button onclick="botao2()" class="botao_quiz">questao 2</button>
+                            <button onclick="botao_pergunta(true)" class="botao_quiz">questao 1</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 2</button>
                         </div>
                         <div class="lado2">
-                            <button onclick="botao3()" class="botao_quiz">questao 3</button>
-                            <button onclick="botao4()" class="botao_quiz">questao 4</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 3</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 4</button>
                         </div>
                     </div>
                 </div>
@@ -82,12 +85,12 @@
                     <h1>2 - pergunta aqui</h1>
                     <div class="caixa_p1">
                         <div class="lado1">
-                            <button onclick="botao5()" class="botao_quiz">questao 1</button>
-                            <button onclick="botao6()" class="botao_quiz">questao 2</button>
+                            <button onclick="botao_pergunta(true)" class="botao_quiz">questao 1</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 2</button>
                         </div>
                         <div class="lado2">
-                            <button onclick="botao7()" class="botao_quiz">questao 3</button>
-                            <button onclick="botao8()" class="botao_quiz">questao 4</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 3</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 4</button>
                         </div>
                     </div>
                 </div>
@@ -97,12 +100,12 @@
                     <h1>3 - pergunta aqui</h1>
                     <div class="caixa_p1">
                         <div class="lado1">
-                            <button onclick="botao9()" class="botao_quiz">questao 1</button>
-                            <button onclick="botao10()" class="botao_quiz">questao 2</button>
+                            <button onclick="botao_pergunta(true)" class="botao_quiz">questao 1</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 2</button>
                         </div>
                         <div class="lado2">
-                            <button onclick="botao11()" class="botao_quiz">questao 3</button>
-                            <button onclick="botao12()" class="botao_quiz">questao 4</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 3</button>
+                            <button onclick="botao_pergunta(false)" class="botao_quiz">questao 4</button>
                         </div>
                     </div>
                 </div>
@@ -110,9 +113,11 @@
             <div class="quiz_final" id="final">
                 <h1>Resultados:</h1>
                 <br>
-                <h2></h2>
-
+                <div class="grafico">
+                <canvas id="pontos"></canvas>
+                </div>
                 <button class="botao_quiz" onclick="voltar()">Voltar</button>
+                
             </div>
 
 
@@ -129,76 +134,89 @@
 </body>
 
 <script>
+    var certas = 0
+    var erradas = 0
+    var contador = 1
+
+
 
     function iniciar() {
         tela_quiz.style.display = 'none'
         pergunta1.style.display = 'block'
     }
 
-    function botao1() {
-        pergunta1.style.display = 'none'    
-        pergunta2.style.display = 'block'
-    }
+    function botao_pergunta(isCorrect) {
+        contador++
 
-    function botao2() {
-        pergunta1.style.display = 'none'    
-        pergunta2.style.display = 'block'
-    }
+        if (contador == 2) {
+            pergunta1.style.display = 'none'
+            pergunta2.style.display = 'block'
 
-    function botao3() {
-        pergunta1.style.display = 'none'    
-        pergunta2.style.display = 'block'
-    }
+        } else if (contador == 3) {
 
-    function botao4() {
-        pergunta1.style.display = 'none'    
-        pergunta2.style.display = 'block'
-    }
+            pergunta2.style.display = 'none'
+            pergunta3.style.display = 'block'
+        } else if (contador == 4) {
 
-    function botao5() {
-        pergunta2.style.display = 'none'    
-        pergunta3.style.display = 'block'
-    }
+            pergunta3.style.display = 'none'
+            final.style.display = 'flex'
 
-    function botao6() {
-        pergunta2.style.display = 'none'    
-        pergunta3.style.display = 'block'
-    }
+        }
+        if (isCorrect) {
+            certas++
+        } else {
+            erradas++
+        }
 
-    function botao7() {
-        pergunta2.style.display = 'none'    
-        pergunta3.style.display = 'block'
-    }
 
-    function botao8() {
-        pergunta2.style.display = 'none'    
-        pergunta3.style.display = 'block'
-    }
+        if (contador == 4) {
 
-    function botao9() {
-        pergunta3.style.display = 'none'    
-        final.style.display = 'flex'
-    }
+            const labels = [
+                'Respostas'
+            ];
 
-    function botao10() {
-        pergunta3.style.display = 'none'    
-        final.style.display = 'flex'
-    }
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Acertos',
+                    backgroundColor: 'blue',
+                    borderColor: 'black',
+                    data: [certas],
+                },
+                {
+                    label: 'Erros',
+                    backgroundColor: 'red',
+                    borderColor: 'black',
+                    data: [erradas],
+                }]
+            };
 
-    function botao11() {
-        pergunta3.style.display = 'none'    
-        final.style.display = 'flex'
-    }
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {}
+            };
 
-    function botao12() {
-        pergunta3.style.display = 'none'    
-        final.style.display = 'flex'
+            const pontos = new Chart(
+                document.getElementById('pontos'),
+                config
+
+
+            );
+
+
+        }
+
+
+
+
     }
 
     function voltar() {
         final.style.display = 'none'
         tela_quiz.style.display = 'flex'
     }
+
 
     function exibirAquarios() {
         JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
@@ -219,5 +237,4 @@
     }
 
 </script>
-
 </html>

@@ -12,10 +12,11 @@ CREATE TABLE usuario (
 select * from usuario;
 
 CREATE TABLE quiz (
-	idQuiz int PRIMARY KEY 	AUTO_INCREMENT,
+	idQuiz int PRIMARY KEY AUTO_INCREMENT,
 	fkUsuario int,
 	pontuacao float,
-	horario timestamp
+    constraint fkusuario foreign key (fkUsuario)
+		references usuario(id)
 );
 
 
