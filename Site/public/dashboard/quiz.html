@@ -22,7 +22,7 @@
         rel="stylesheet">
 </head>
 
-<body> <!--  onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()" -->
+<body onload="validarSessao()">
 
     <div class="janela">
 
@@ -114,10 +114,10 @@
                 <h1>Resultados:</h1>
                 <br>
                 <div class="grafico">
-                <canvas id="pontos"></canvas>
+                    <canvas id="pontos"></canvas>
                 </div>
                 <button class="botao_quiz" onclick="voltar()">Voltar</button>
-                
+
             </div>
 
 
@@ -205,6 +205,15 @@
             );
 
 
+            fetch("/resultado/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    pontuacaoServer: certas
+                }),
+            })
         }
 
 
@@ -218,23 +227,24 @@
     }
 
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
+    // function exibirAquarios() {
+    //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
+    //         document.getElementById("cardAquarios").innerHTML += `
+    //                 <div class="card-aquario">
+    //                     <div class="title-aquario">
+    //                         <h1>${item.descricao}</h1>
+    //                     </div>
+    //                     <div class="desc-aquario">
+    //                     <div class="temperatura">
+    //                         <p id="temp_aquario_${item.id}">-°C</p>
+    //                     </div>
+    //                     <div class="cor-alerta" id="card_${item.id}"></div>
+    //                 </div>
+    //                 </div>
+    //                 `
+    //     });
+    // }
 
 </script>
+
 </html>

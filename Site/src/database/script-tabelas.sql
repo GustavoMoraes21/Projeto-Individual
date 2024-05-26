@@ -19,5 +19,6 @@ CREATE TABLE quiz (
 		references usuario(id)
 );
 
+select * from quiz;
 
 
