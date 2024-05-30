@@ -2,8 +2,10 @@ var resultadoModel = require("../models/resultadoModel");
 
 function cadastrar(req, res) {
   var pontuacao = req.body.pontuacaoServer;
+  var usuario = req.body.UsuarioServer;
 
-  resultadoModel.cadastrar(pontuacao)
+
+  resultadoModel.cadastrar(usuario, pontuacao)
     .then((resultado) => {
       res.status(201).json(resultado);
     }

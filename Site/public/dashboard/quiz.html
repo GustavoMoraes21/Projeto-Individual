@@ -134,11 +134,9 @@
 </body>
 
 <script>
-    var certas = 0
-    var erradas = 0
-    var contador = 1
-
-
+    var certas = 0;
+    var erradas = 0;
+    var contador = 1;
 
     function iniciar() {
         tela_quiz.style.display = 'none'
@@ -211,7 +209,9 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    pontuacaoServer: certas
+                    pontuacaoServer: certas,
+                    UsuarioServer: sessionStorage.ID_USUARIO
+
                 }),
             })
         }
