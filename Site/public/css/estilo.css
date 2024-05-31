@@ -99,6 +99,19 @@ body {
   padding: 0px;
   padding-top: 10px;
   text-align: justify;
+  
+}
+
+.banner .container .boxes p {
+  color: black;
+  align-items: center;
+  width: 100%;
+  font-size: 30px;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 10px;
+  text-align: justify;
 }
 
 .banner .container b {
@@ -149,7 +162,41 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.boxes2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   padding: 30px 0;
+}
+
+.boxes2_caixa {
+  display: flex;
+  flex-direction: row;
+}
+
+.boxes2 img {
+  width: 300px;
+  height: 400px;
+}
+
+.boxes2_imagem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.boxes2_imagem h1 {
+  color: black;
+}
+.boxes2 h1 {
+  color: black;
+}
+
+.p {
+  padding-left: 20px;
 }
 
 .social p {
@@ -158,9 +205,16 @@ body {
 
 .box {
   display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.box2 {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
+  padding-right: 50px;
 }
 
 .linha {
@@ -421,7 +475,7 @@ body {
 
 input {
   margin-bottom: 10px;
-  border: 2px solid #32b9cd;
+  border: 2px solid black;
   padding: 10px;
   text-align: center;
   border-radius: 10px;

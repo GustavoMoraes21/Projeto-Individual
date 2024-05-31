@@ -15,7 +15,8 @@ body {
 
 .dash-right .avisos {
   width: 100%;
-  color: rgb(216, 216, 216);
+  padding-top: 40px;
+  color: black;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -44,7 +45,7 @@ body {
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid #e6005a;
+  border: 3px solid black;
   background-color: white;
   border-radius: 5px;
 }
@@ -58,7 +59,7 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: black;
   width: 120px;
 }
 
@@ -71,7 +72,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: black;
   width: 80px;
 }
 
@@ -82,7 +83,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid black;
   padding: 20px;
 }
 
@@ -95,7 +96,7 @@ body {
 }
 
 .div-results .feed-container {
-  background-color: #212124;
+  background-color: #ffffff;
   border-radius: 5px;
   margin-bottom: 80px;
 }
@@ -151,35 +152,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-self: center;
-}
-
-.item-regua p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.item-regua p:nth-child(2) {
-  font-weight: 800;
-}
-
-.perigo-frio {
-  background-color: #5c6bc0;
-}
-
-.perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
 }
 
 .cards {
@@ -282,7 +254,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: #e6005a;
+  color: black;
   background-color: white;
   margin: 5px;
   border-radius: 3px;
@@ -295,7 +267,7 @@ body {
 }
 
 .btn-white {
-  color: #e6005a;
+  color: black;
   background-color: white;
 
 }
@@ -352,7 +324,7 @@ canvas {
   display: flex;
   width: 70%;
   height: fit-content;
-  background-color: #161618;
+  background-color: #ffffff;
   position: relative;
   top: 0;
   left: 25%;
