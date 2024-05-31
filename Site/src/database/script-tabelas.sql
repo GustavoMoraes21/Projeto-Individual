@@ -21,4 +21,15 @@ CREATE TABLE quiz (
 
 select * from quiz;
 
+CREATE TABLE aviso (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(100),
+	descricao VARCHAR(150),
+	fkUsuario INT,
+	constraint fkUsuario2 foreign key (fkUsuario)
+		references usuario(id)
+);
 
+select * from aviso;
+
+truncate aviso;
