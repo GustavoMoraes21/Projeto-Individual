@@ -21,7 +21,7 @@ CREATE TABLE quiz (
 
 select * from quiz;
 
-CREATE TABLE aviso (
+CREATE TABLE sugestoes (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	titulo VARCHAR(100),
 	descricao VARCHAR(150),
@@ -30,6 +30,5 @@ CREATE TABLE aviso (
 		references usuario(id)
 );
 
-select * from aviso;
+select * from sugestoes;
 
-truncate aviso;
