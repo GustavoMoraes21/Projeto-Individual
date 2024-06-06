@@ -112,16 +112,6 @@ body {
 
 /* pagina graficos */
 
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: white;
-  height: 100vh;
-  overflow: auto;
-}
-
 .area-parametros-alerta {
   /* border: 2px solid pink; */
   display: flex;
@@ -297,6 +287,7 @@ canvas {
 
 .janela {
   display: flex;
+  flex-direction: column;
   /* width: 100vw; */
 }
 
@@ -434,35 +425,108 @@ canvas {
 }
 
 .botao_celta {
-  background-image: url(../assets/celta_frente.jpeg);
+  background-image: url(../assets/celta_teste.png);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 6px;
-  height: 240px;
-  width: 350px;
+  height: 180px;
+  width: 240px;
   border: 3px solid black;
 }
 
-.botao_celta:hover{
+.botao_celta:hover {
   transform: scale(1.1);
-  transition: 0.8s ;
+  transition: 0.8s;
 }
 
 .botao_astra {
-  background-image: url(../assets/celta_frente.jpeg);
+  background-image: url(../assets/astra.png);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 6px;
-  height: 240px;
-  width: 350px;
+  height: 180px;
+  width: 240px;
   border: 3px solid black;
+}
+
+.botao_astra:hover {
+  transform: scale(1.1);
+  transition: 0.8s;
+}
+
+.botao_vectra {
+  background-image: url(../assets/vectra4.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 6px;
+  height: 180px;
+  width: 240px;
+  border: 3px solid black;
+}
+
+.botao_vectra:hover {
+  transform: scale(1.1);
+  transition: 0.8s;
 }
 
 .dash {
   display: flex;
+  width: 80%;
+  position: relative;
+  top: 0;
+  left: 20%;
+  background-color: white;
+  height: 30vh;
+  overflow: auto;
   justify-content: space-around;
   grid-template-columns: repeat(3, lfr);
   padding-top: 30px;
+}
+
+.dash2 {
+  display: flex;
+  width: 80%;
+  position: relative;
+  justify-content: center;
+  top: 0;
+  left: 20%;
+  background-color: white;
+  height: 50vh;
+  overflow: auto;
+  padding-top: 40px;
+  
+}
+
+.info-carros {
+  display: none;
+  border: 3px solid black;
+  width: 80%;
+  border-radius: 6px;
+  flex-direction: column;
+  
+}
+
+.info-carros p {
+  padding: 0px 20px 0px 20px;
+  text-align: justify;
+  font-weight: 500;
+}
+
+.info-carros .infos {
+  display: flex;
+  flex-direction: row;
+}
+
+.nome-carros {
+  display: flex;
+  width: 80%;
+  position: relative;
+  top: 10px;
+  left: 20%;
+  background-color: white;
+  justify-content: space-around;
+  font-weight: 900;
+  z-index: 6;
 }
 
 .distancia {

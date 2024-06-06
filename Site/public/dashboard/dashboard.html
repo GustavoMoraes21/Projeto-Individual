@@ -11,19 +11,7 @@
     
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <!-- scripts do Chart.js - 2022-1 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
@@ -32,7 +20,7 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1>CarMeeting</h1>
+            <h1>Car<b>Meeting</b></h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -46,7 +34,7 @@
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3>Carros</h3>
 
             </div>
 
@@ -63,9 +51,67 @@
         </div>
 
         <div class="dash">
-            <button class="botao_celta"></button>
-            <button class="botao_astra"></button>
-            <button class="botao_celta"></button>
+            <button class="botao_celta" onclick="celta()"></button>
+            <button class="botao_astra" onclick="astra()"></button>
+            <button class="botao_vectra" onclick="vectra()"></button> 
+        </div>
+        <div class="nome-carros">
+            <div class="nome-celta">Celta</div>
+            <div class="nome-astra">Astra</div>
+            <div class="nome-vectra">Vectra</div>
+        </div>
+        <div class="dash2">
+            <div class="info-carros" id="celta_div">
+                <p>O Chevrolet Celta é um automóvel compacto produzido pela General Motors do Brasil, sob a marca Chevrolet. A produção do Celta iniciou em 2000 e terminou em 2015. Ele foi um dos modelos mais populares no mercado brasileiro, devido ao seu custo acessível e manutenção econômica. A seguir estão as principais informações sobre o Chevrolet Celta:</p>
+                <div class="infos">
+                    <p><b>Histórico</b><br><br>
+                        Lançamento: 2000.<br>
+                        Término da produção: 2015.<br>
+                        Fabricante: General Motors do Brasil.<br>
+                        Plataforma: Derivada do Opel Corsa B.<br>
+                    </p>
+                    <p><b>Motorização</b><br><br>
+                        1.0 MPFI: Motor 1.0 de 60 a 78 cavalos de potência, dependendo do ano e da versão.<br>
+                        1.4 MPFI: Motor 1.4 de 85 a 97 cavalos de potência, dependendo do ano e da versão.<br>
+                        Flex Fuel: Algumas versões a partir de 2006, que podem rodar com gasolina, etanol ou a mistura de ambos.
+
+                    </p>
+                </div>
+            </div>
+            <div class="info-carros" id="astra_div">
+                <p>O Chevrolet Astra é um automóvel de porte médio produzido pela General Motors do Brasil, sob a marca Chevrolet. A produção do Astra iniciou em 1998 e terminou em 2011. Ele foi um dos modelos mais desejados no mercado brasileiro, devido ao seu desempenho, conforto e design atrativo. A seguir estão as principais informações sobre o Chevrolet Astra:</p>
+                <div class="infos">
+                    <p><b>Histórico</b><br><br>
+                        Lançamento: 1998 (no Brasil).<br>
+                        Término da produção: 2011.<br>
+                        Fabricante: General Motors do Brasil, sob a marca Chevrolet.<br>
+                        Plataforma: Derivada do Opel Astra, de origem europeia.
+                    </p>
+                    <p><b>Motorização</b><br><br>
+                        1.8 MPFI: Motor 1.8 de 110 a 122 cavalos de potência, dependendo do ano e da versão.<br>
+                        2.0 MPFI: Motor 2.0 de 116 a 140 cavalos de potência, dependendo do ano e da versão.<br>
+                        Flex Fuel: Algumas versões, especialmente após 2005, que podem rodar com gasolina, etanol ou a mistura de ambos.
+
+                    </p>
+                </div>
+            </div>
+            <div class="info-carros" id="vectra_div">
+                <p>O Chevrolet Vectra é um automóvel de porte médio produzido pela General Motors do Brasil, sob a marca Chevrolet. A produção do Vectra iniciou em 1993 e terminou em 2011. Ele foi um dos modelos mais respeitados no mercado brasileiro, devido ao seu conforto, desempenho e sofisticação. A seguir estão as principais informações sobre o Chevrolet Vectra:</p>
+                <div class="infos">
+                    <p><b>Histórico</b><br><br>
+                        Lançamento: 1993 (no Brasil).<br>
+                        Término da produção: 2011.<br>
+                        Fabricante: General Motors do Brasil, sob a marca Chevrolet.<br>
+                        Plataforma: Derivada do Opel Vectra, de origem europeia.
+                    </p>
+                    <p><b>Motorização</b><br><br>
+                        2.0 MPFI: Motor 2.0 de 116 a 140 cavalos de potência, dependendo do ano e da versão.<br>
+                        2.2 MPFI: Motor 2.2 de 123 a 138 cavalos de potência, dependendo do ano e da versão.<br>
+                        2.4 Flex: Motor 2.4 de 146 a 150 cavalos de potência, dependendo do combustível utilizado (gasolina ou etanol).
+
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -77,5 +123,24 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    
+    function celta() {
+        celta_div.style.display = "flex";
+        astra_div.style.display = "none";
+        vectra_div.style.display = "none";
+        
+    }
+
+    function astra() {
+        celta_div.style.display = "none";
+        astra_div.style.display = "flex";
+        vectra_div.style.display = "none";
+        
+    }
+
+    function vectra() {
+        celta_div.style.display = "none";
+        astra_div.style.display = "none";
+        vectra_div.style.display = "flex";
+        
+    }
 </script>
